@@ -56,6 +56,17 @@ declare module '@mui/material/styles' {
       secondary: string;
     }
   }
+
+  interface BreakpointOverrides {
+    xs: false;
+    sm: false;
+    md: false;
+    lg: false;
+    xl: false;
+    mobile: true;
+    tablet: true;
+    desktop: true;
+  }
 }
 
 const theme = createTheme({
@@ -95,6 +106,13 @@ const theme = createTheme({
     },
     error: {
       main: '#E85050'
+    }
+  },
+  breakpoints: {
+    values: {
+      mobile: 375,
+      tablet: 768,
+      desktop: 1440
     }
   }
 })
