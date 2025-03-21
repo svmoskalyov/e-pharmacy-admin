@@ -36,8 +36,9 @@ declare module '@mui/material/styles' {
     },
     bg?: {
       green: string;
-      blue: string;
       grey: string;
+      blue: string;
+      silver: string;
       white: string;
     },
     status?: {
@@ -59,6 +60,9 @@ declare module '@mui/material/styles' {
 
 const theme = createTheme({
   cssVariables: true,
+  typography: {
+    fontFamily: ['"Inter Variable"', 'sans-serif'].join(',')
+  },
   palette: {
     accent: {
       main: '#59B17A',
@@ -73,12 +77,13 @@ const theme = createTheme({
     },
     text: {
       primary: '#1D1E21',
-      secondary: '#DCDDDF'
+      secondary: '#1D1E2166'
     },
     bg: {
       green: '#E7F1ED',
+      grey: '#DCDDDF',
       blue: '#F7F8FA',
-      grey: '#F9F9F9',
+      silver: '#F9F9F9',
       white: '#FFFFFF'
     },
     status: {
