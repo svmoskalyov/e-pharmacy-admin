@@ -1,48 +1,65 @@
 import { useState } from 'react'
 import { Outlet } from 'react-router'
-import { Box } from '@mui/material'
-// import { useMediaQuery, useTheme } from '@mui/material'
+import { useMediaQuery, useTheme, Box, IconButton } from '@mui/material'
+import { Icon } from '@iconify/react'
 import Header from '../components/Header.tsx'
 import Sidebar from '../components/Sidebar.tsx'
+import Drawer from '@mui/material/Drawer'
 
 function SharedLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
-  // const theme = useTheme()
-  // const isDesktop = useMediaQuery(theme.breakpoints.up('desktop'))
+  const theme = useTheme()
+  const isDesktop = useMediaQuery(theme.breakpoints.up('desktop'))
 
   const handleSidebarToggle = () => {
     setIsSidebarOpen((prevState) => !prevState)
   }
 
-  // const handleMenuClick = () => {
-  //   setIsSidebarOpen(true)
-  // }
-  //
-  // const handleSidebarClose = () => {
-  //   setIsSidebarOpen(false)
-  // }
-
   return (
-    <Box>
-      <Header onMenuClick={handleSidebarToggle} />
-      <Sidebar
+    <>
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: { mobile: '0px 1fr', desktop: '80px 1fr' },
+          gridTemplateRows: 'auto',
+          gridTemplateAreas: `
+        "header header"
+        "sidebar main"`
+        }}
+      >
+        <Header onMenuClick={handleSidebarToggle} />
+        {isDesktop && <Sidebar />}
+        <Box
+          component="main"
+          sx={{
+            gridArea: 'main',
+            padding: { mobile: '16px', tablet: '32px', desktop: '20px' }
+          }}
+        >
+          <Outlet />
+        </Box>
+      </Box>
+
+      <Drawer
+        anchor="left"
         open={isSidebarOpen}
         onClose={handleSidebarToggle}
-        // variant={isDesktop ? 'permanent' : 'temporary'}
-      />
-      <Box
-        component="main"
-        // sx={{
-        //   py: 4,
-        //   display: 'flex',
-        //   flexDirection: 'column',
-        //   alignItems: 'center',
-        //   textAlign: 'center'
-        // }}
+        sx={{
+          '& .MuiDrawer-paper': { backgroundColor: 'background.default' }
+        }}
       >
-        <Outlet />
-      </Box>
-    </Box>
+        <Box sx={{ width: '80px' }}>
+          <IconButton
+            sx={{ ml: '32px', mb: '40px', color: 'text.primary' }}
+            aria-label="button close sidebar"
+            onClick={handleSidebarToggle}
+          >
+            <Icon icon="majesticons:close" width="32" height="32" />
+          </IconButton>
+          <Sidebar onClose={handleSidebarToggle} />
+        </Box>
+      </Drawer>
+    </>
   )
 }
 
