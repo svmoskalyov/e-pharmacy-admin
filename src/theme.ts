@@ -106,6 +106,9 @@ const theme = createTheme({
     },
     error: {
       main: '#E85050'
+    },
+    background: {
+      default: '#F7F8FA'
     }
   },
   breakpoints: {
