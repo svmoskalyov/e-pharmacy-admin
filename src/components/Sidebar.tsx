@@ -1,130 +1,91 @@
-import Drawer from '@mui/material/Drawer'
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemText from '@mui/material/ListItemText'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
-import { Icon } from '@iconify/react'
-import pageIcon from '@iconify-icons/majesticons/document-line'
-import { Box, useMediaQuery, useTheme } from '@mui/material'
 import {
-  AppProvider,
-  type Router,
-  type Navigation
-} from '@toolpad/core/AppProvider'
-import { DashboardLayout } from '@toolpad/core/DashboardLayout'
-import Typography from '@mui/material/Typography'
-import { useMemo, useState } from 'react'
+  Box, List, ListItem, ListItemButton
+} from '@mui/material'
+import { Icon } from '@iconify/react'
+import ButtonLogout from './ui/ButtonLogout.tsx'
 
-function PageContent({ pathname }: { pathname: string }) {
+interface SidebarProps {
+  onClose?: () => void;
+}
+
+const data = [
+  { icon: 'ic:round-dashboard', label: 'dashboard' },
+  { icon: 'ic:round-shopping-cart', label: 'orders' },
+  { icon: 'mingcute:flask-fill', label: 'products' },
+  { icon: 'mdi:local-pharmacy', label: 'suppliers' },
+  { icon: 'mdi:users', label: 'customers' }
+]
+
+function Sidebar({ onClose }: SidebarProps) {
+  const [selectedValue, setSelectedValue] = useState<string>('')
+
+  const handleListItemClick = (choiced: string) => {
+    setSelectedValue(choiced)
+    if (onClose) {
+      onClose()
+    }
+  }
+
+  useEffect(() => {
+    setSelectedValue(window.location.pathname.split('/')[1])
+  }, [])
+
   return (
     <Box
       sx={{
-        py: 4,
+        gridArea: 'sidebar',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        textAlign: 'center'
+        justifyContent: 'space-between',
+        height: '90vh',
+        borderRight: { desktop: '1px solid rgba(29, 30, 33, 0.1)' }
       }}
     >
-      <Typography>Dashboard content for {pathname}</Typography>
-    </Box>
-  )
-}
-
-interface SidebarProps {
-  open: boolean;
-  onClose: () => void;
-  // variant: 'permanent' | 'temporary';
-}
-
-const NAVIGATION: Navigation = [
-  {
-    segment: 'dashboard',
-    title: 'Dashboard'
-    // icon: <DashboardIcon />,
-  },
-  {
-    segment: 'orders',
-    title: 'Orders'
-    // icon: <ShoppingCartIcon />,
-  },
-  {
-    segment: 'products',
-    title: 'Products'
-    // icon: <BarChartIcon />,
-  }
-]
-
-function Sidebar({ open, onClose }: SidebarProps) {
-  const theme = useTheme()
-  const isDesktop = useMediaQuery(theme.breakpoints.up('desktop'))
-  const drawerWidth = 240
-
-  const [pathname, setPathname] = useState('/dashboard')
-
-  const router = useMemo<Router>(() => {
-    return {
-      pathname,
-      searchParams: new URLSearchParams(),
-      navigate: (path) => setPathname(String(path))
-    }
-  }, [pathname])
-
-  return (
-    <Drawer
-      // anchor="left"
-      open={open}
-      onClose={onClose}
-      variant={isDesktop ? 'permanent' : 'temporary'}
-      // variant={variant}
-      // ModalProps={{
-      //   keepMounted: true
-      // }}
-      // sx={{
-      //   display: { xs: 'block', sm: 'none' },
-      //   '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
-      // }}
-    >
-
-      {/*<AppProvider*/}
-      {/*  navigation={NAVIGATION}*/}
-      {/*  router={router}*/}
-      {/*  // branding={{*/}
-      {/*  //   logo: <img src="https://mui.com/static/logo.png" alt="MUI logo" />,*/}
-      {/*  //   title: 'MUI',*/}
-      {/*  //   homeUrl: '/toolpad/core/introduction',*/}
-      {/*  // }}*/}
-      {/*>*/}
-      {/*  <DashboardLayout*/}
-      {/*    defaultSidebarCollapsed*/}
-      {/*    // hideNavigation*/}
-      {/*  >*/}
-      {/*    <PageContent pathname={pathname} />*/}
-      {/*  </DashboardLayout>*/}
-      {/*</AppProvider>*/}
-
-      <List>
-        <ListItem disablePadding>
-          <ListItemButton component={Link} to="/dashboard" onClick={onClose}>
-            <Icon icon={pageIcon} style={{ marginRight: '8px' }} />
-            <ListItemText primary="dashboard" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton component={Link} to="/orders" onClick={onClose}>
-            <Icon icon={pageIcon} style={{ marginRight: '8px' }} />
-            <ListItemText primary="orders" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton component={Link} to="/products" onClick={onClose}>
-            <Icon icon={pageIcon} style={{ marginRight: '8px' }} />
-            <ListItemText primary="products" />
-          </ListItemButton>
-        </ListItem>
+      <List disablePadding sx={{ marginTop: '40px' }}>
+        {data.map((item) => (
+          <ListItem
+            key={item.label}
+            disablePadding
+            sx={{ justifyContent: 'center', marginBottom: '14px' }}
+          >
+            <ListItemButton
+              component={Link}
+              to={item.label}
+              selected={selectedValue === item.label}
+              onClick={() => handleListItemClick(item.label)}
+              sx={[
+                {
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '0',
+                  // maxWidth: '40px',
+                  width: '40px',
+                  height: '40px',
+                  color: 'bg.grey',
+                  backgroundColor: 'bg.white',
+                  borderRadius: '50px',
+                  dropShadow: '0px -1px 7px 0px rgba(71, 71, 71, 0.05)'
+                },
+                {
+                  '&:hover, &:focus, &.Mui-selected, &.Mui-selected:hover': {
+                    color: 'accent.main',
+                    backgroundColor: 'bg.white'
+                  }
+                }
+              ]}
+            >
+              <Icon icon={item.icon} width="14" height="14" />
+            </ListItemButton>
+          </ListItem>
+        ))}
       </List>
-    </Drawer>
+      <Box sx={{ display: { mobile: 'block', desktop: 'none' } }}>
+        <ButtonLogout />
+      </Box>
+    </Box>
   )
 }
 
