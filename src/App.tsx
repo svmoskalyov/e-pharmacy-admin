@@ -22,8 +22,8 @@ function App() {
             <Route path="dashboard" element={<DashboardPage />} />
             <Route path="orders" element={<AllOrdersPage />} />
             <Route path="products" element={<AllProductsPage />} />
-            <Route path="customers" element={<CustomersDataPage />} />
             <Route path="suppliers" element={<AllSuppliersPage />} />
+            <Route path="customers" element={<CustomersDataPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         )}
