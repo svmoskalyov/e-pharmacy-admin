@@ -1,5 +1,5 @@
+import { useLocation } from 'react-router'
 import {
-  useMediaQuery, useTheme,
   Box, AppBar, Toolbar, Typography, IconButton, Divider
 } from '@mui/material'
 import { Icon } from '@iconify/react'
@@ -11,8 +11,9 @@ interface HeaderProps {
 }
 
 function Header({ onMenuClick }: HeaderProps) {
-  const theme = useTheme()
-  const isDesktop = useMediaQuery(theme.breakpoints.up('desktop'))
+  const { pathname } = useLocation()
+  const location = pathname.split('/')[1]
+  const namePlace = location.charAt(0).toUpperCase() + location.slice(1)
 
   return (
     <Box sx={{ gridArea: 'header' }}>
@@ -34,17 +35,25 @@ function Header({ onMenuClick }: HeaderProps) {
             height: '80px'
           }}
         >
-          {!isDesktop &&
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2, display: { desktop: 'none' } }}
-              onClick={onMenuClick}
-            >
-              <Icon icon="iconamoon:menu-burger-horizontal-duotone" width="32" height="32" />
-            </IconButton>
-          }
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="button open sidebar"
+            onClick={onMenuClick}
+            sx={[
+              {
+                mr: 2,
+                display: { desktop: 'none' }
+              },
+              {
+                '&:hover': {
+                  backgroundColor: 'transparent'
+                }
+              }
+            ]}
+          >
+            <Icon icon="iconamoon:menu-burger-horizontal-duotone" width="32" height="32" />
+          </IconButton>
           <Logo />
           <Box sx={{ flexGrow: 1, ml: 1 }}>
             <Typography
@@ -55,7 +64,6 @@ function Header({ onMenuClick }: HeaderProps) {
             >
               Medicine store
             </Typography>
-
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
               <Typography
                 variant="caption"
@@ -63,7 +71,7 @@ function Header({ onMenuClick }: HeaderProps) {
                 lineHeight="18px"
                 color="text.secondary"
               >
-                Dasboard
+                {namePlace}
               </Typography>
               <Divider orientation="vertical" sx={{ height: '12px' }} />
               <Typography
@@ -72,12 +80,14 @@ function Header({ onMenuClick }: HeaderProps) {
                 lineHeight="18px"
                 color="text.secondary"
               >
-                vendor@email.com
+                admin@email.com
               </Typography>
             </Box>
           </Box>
 
-          {isDesktop && <ButtonLogout />}
+          <Box sx={{ display: { mobile: 'none', desktop: 'block' } }}>
+            <ButtonLogout />
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>
