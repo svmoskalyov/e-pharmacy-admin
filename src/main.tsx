@@ -1,7 +1,6 @@
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router'
-import { ThemeProvider } from '@mui/material'
-import { CssBaseline } from '@mui/material'
+import { ThemeProvider, CssBaseline } from '@mui/material'
 import theme from './theme.ts'
 import App from './App.tsx'
 
