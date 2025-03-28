@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { Outlet } from 'react-router'
-import { useMediaQuery, useTheme, Box, IconButton } from '@mui/material'
+import {
+  useMediaQuery, useTheme, Drawer, Box, IconButton
+} from '@mui/material'
 import { Icon } from '@iconify/react'
 import Header from '../components/Header.tsx'
 import Sidebar from '../components/Sidebar.tsx'
-import Drawer from '@mui/material/Drawer'
 
 function SharedLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
@@ -45,14 +46,25 @@ function SharedLayout() {
         open={isSidebarOpen}
         onClose={handleSidebarToggle}
         sx={{
-          '& .MuiDrawer-paper': { backgroundColor: 'background.default' }
+          '& .MuiDrawer-paper': { padding: '20px', backgroundColor: 'background.default' }
         }}
       >
-        <Box sx={{ width: '80px' }}>
+        <Box sx={{ width: '40px' }}>
           <IconButton
-            sx={{ ml: '32px', mb: '40px', color: 'text.primary' }}
             aria-label="button close sidebar"
             onClick={handleSidebarToggle}
+            sx={[
+              {
+                ml: '20px',
+                padding: '0',
+                color: 'text.primary'
+              },
+              {
+                '&:hover': {
+                  backgroundColor: 'transparent'
+                }
+              }
+            ]}
           >
             <Icon icon="majesticons:close" width="32" height="32" />
           </IconButton>
