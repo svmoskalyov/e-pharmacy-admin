@@ -8,14 +8,16 @@ import CustomersDataPage from './pages/CustomersDataPage.tsx'
 import AllSuppliersPage from './pages/AllSuppliersPage.tsx'
 
 function App() {
-  // const isAuth = false
-  const isAuth = true
+  const isAuth = false
+  // const isAuth = true
 
   return (
     <>
       <Routes>
         {!isAuth ? (
-          <Route path="/" element={<LoginPage />} />
+          <Route path="/" element={<LoginPage />}>
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Route>
         ) : (
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<Navigate replace to="dashboard" />} />
