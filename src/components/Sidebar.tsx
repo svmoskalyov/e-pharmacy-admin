@@ -61,7 +61,6 @@ function Sidebar({ onClose }: SidebarProps) {
                   alignItems: 'center',
                   justifyContent: 'center',
                   padding: '0',
-                  // maxWidth: '40px',
                   width: '40px',
                   height: '40px',
                   color: 'bg.grey',
