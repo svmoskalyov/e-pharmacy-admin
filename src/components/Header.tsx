@@ -5,6 +5,7 @@ import {
 import { Icon } from '@iconify/react'
 import ButtonLogout from './ui/ButtonLogout.tsx'
 import Logo from './ui/Logo.tsx'
+import { useAuthStore } from '../stores/authStore.ts'
 
 interface HeaderProps {
   onMenuClick: () => void;
@@ -12,6 +13,7 @@ interface HeaderProps {
 
 function Header({ onMenuClick }: HeaderProps) {
   const { pathname } = useLocation()
+  const { email } = useAuthStore()
   const location = pathname.split('/')[1]
   const namePlace = location.charAt(0).toUpperCase() + location.slice(1)
 
@@ -80,7 +82,7 @@ function Header({ onMenuClick }: HeaderProps) {
                 lineHeight="18px"
                 color="text.secondary"
               >
-                admin@email.com
+                {email}
               </Typography>
             </Box>
           </Box>
