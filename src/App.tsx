@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router'
+import { useAuthStore } from './stores/authStore.ts'
 import LoginPage from './pages/LoginPage.tsx'
 import SharedLayout from './layouts/SharedLayout.tsx'
 import DashboardPage from './pages/DashboardPage.tsx'
@@ -8,8 +9,7 @@ import CustomersDataPage from './pages/CustomersDataPage.tsx'
 import AllSuppliersPage from './pages/AllSuppliersPage.tsx'
 
 function App() {
-  const isAuth = false
-  // const isAuth = true
+  const { isAuth } = useAuthStore()
 
   return (
     <>
