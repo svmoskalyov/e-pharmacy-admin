@@ -1,10 +1,39 @@
+import { useEffect } from 'react'
 import { Box, Typography } from '@mui/material'
+import { useAuthStore } from '../stores/authStore.ts'
 import logo from '../assets/icons/logo.svg'
 import pill from '../assets/images/pill-w1x.png'
 import LoginForm from '../components/LoginForm.tsx'
 import DecorLines from '../components/ui/DecorLines.tsx'
 
 function LoginPage() {
+  const { error } = useAuthStore()
+
+  const createErrorMessage = (error: string) => {
+    if (`${error}` === 'Firebase: Error (auth/too-many-requests).') {
+      console.log('Too many requests.')
+    } else if (
+      `${error}` === 'Firebase: Error (auth/network-request-failed).'
+    ) {
+      console.log('Problem with network')
+    } else if (
+      `${error}` === 'Firebase: Error (auth/invalid-login-credentials).'
+    ) {
+      console.log('Email or password is not correct')
+    } else if (`${error}` === 'Firebase: Error (auth/invalid-credential).') {
+      console.log('User not found')
+    } else {
+      console.log(error)
+    }
+    return error
+  }
+
+  useEffect(() => {
+    if (error) {
+      createErrorMessage(error)
+    }
+  }, [error])
+
   return (
     <Box
       sx={{
