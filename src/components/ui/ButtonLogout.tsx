@@ -1,7 +1,10 @@
 import { IconButton } from '@mui/material'
 import { Icon } from '@iconify/react'
+import { useAuthStore } from '../../stores/authStore.ts'
 
 function ButtonLogout() {
+  const { signOut } = useAuthStore()
+
   return (
     <IconButton
       sx={{
@@ -10,7 +13,7 @@ function ButtonLogout() {
         backgroundColor: 'accent.main',
         color: 'accent.contrastText'
       }}
-      onClick={() => console.log('logout')}
+      onClick={signOut}
     >
       <Icon icon="majesticons:logout" width="14" height="14" />
     </IconButton>
