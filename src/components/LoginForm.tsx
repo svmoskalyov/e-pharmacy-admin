@@ -27,7 +27,8 @@ function LoginForm() {
   const {
     register, handleSubmit, formState: { errors }
   } = useForm<LoginFormValues>({ resolver: yupResolver(schema) })
-  const { signIn, isLoading } = useAuthStore()
+  const signIn = useAuthStore((state) => state.signIn)
+  const isLoading = useAuthStore((state) => state.isLoading)
 
   const onSubmit: SubmitHandler<LoginFormValues> = data => {
     signIn(data)
