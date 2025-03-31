@@ -13,7 +13,7 @@ interface HeaderProps {
 
 function Header({ onMenuClick }: HeaderProps) {
   const { pathname } = useLocation()
-  const { email } = useAuthStore()
+  const email = useAuthStore((state) => state.email)
   const location = pathname.split('/')[1]
   const namePlace = location.charAt(0).toUpperCase() + location.slice(1)
 
