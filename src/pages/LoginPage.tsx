@@ -7,7 +7,7 @@ import LoginForm from '../components/LoginForm.tsx'
 import DecorLines from '../components/ui/DecorLines.tsx'
 
 function LoginPage() {
-  const { error } = useAuthStore()
+  const error = useAuthStore((state) => state.error)
 
   const createErrorMessage = (error: string) => {
     if (`${error}` === 'Firebase: Error (auth/too-many-requests).') {
