@@ -9,7 +9,7 @@ import CustomersDataPage from './pages/CustomersDataPage.tsx'
 import AllSuppliersPage from './pages/AllSuppliersPage.tsx'
 
 function App() {
-  const { isAuth } = useAuthStore()
+  const isAuth = useAuthStore((state) => state.isAuth)
 
   return (
     <>
