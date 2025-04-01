@@ -33,6 +33,7 @@ declare module '@mui/material/styles' {
       main: string;
       light: string;
       dark: string;
+      grey: string;
     },
     bg?: {
       green: string;
@@ -84,7 +85,8 @@ const theme = createTheme({
     accent2: {
       main: '#E85050',
       light: '#E850501A',
-      dark: '#DA4A4A'
+      dark: '#DA4A4A',
+      grey: '#1D1E211A'
     },
     text: {
       primary: '#1D1E21',
