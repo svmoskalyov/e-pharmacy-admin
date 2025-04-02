@@ -56,8 +56,8 @@ function IncomeExpenses({ incomeExpenses }: IncomeExpensesProps) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {incomeExpenses.map((row) => (
-              <TableRow key={row.name}>
+            {incomeExpenses.map((row, i) => (
+              <TableRow key={i}>
                 <TableCell
                   sx={{
                     padding: '10px',
