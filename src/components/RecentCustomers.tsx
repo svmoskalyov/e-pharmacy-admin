@@ -82,8 +82,8 @@ function RecentCustomers({ customers }: RecentCustomersProps) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {customers.map((row) => (
-              <TableRow key={row.name}>
+            {customers.map((row, i) => (
+              <TableRow key={i}>
                 <TableCell
                   sx={{
                     display: 'flex',
