@@ -16,7 +16,6 @@ function RecentCustomers({ customers }: RecentCustomersProps) {
   return (
     <Paper
       sx={{
-        marginBottom: '40px',
         width: '100%',
         borderRadius: '8px',
         boxShadow: 'none',
@@ -27,25 +26,29 @@ function RecentCustomers({ customers }: RecentCustomersProps) {
         variant="h6"
         component="div"
         sx={{
-          padding: '14px',
-          fontSize: '16px',
+          padding: { mobile: '14px', tablet: '20px' },
+          fontSize: { mobile: '16px', tablet: '18px' },
           fontWeight: 600,
-          lineHeight: '20px',
+          lineHeight: { mobile: '20px', tablet: '24px' },
           backgroundColor: 'bg.green'
         }}
       >
         Recent Customers
       </Typography>
-      <TableContainer sx={{ maxHeight: '422px' }}>
+      <TableContainer
+        sx={{
+          maxHeight: { mobile: '422px', tablet: '512px' }
+        }}
+      >
         <Table stickyHeader aria-label="recent customers table">
           <TableHead>
             <TableRow>
               <TableCell
                 sx={{
-                  padding: '14px',
-                  fontSize: '12px',
+                  padding: { mobile: '14px', tablet: '20px' },
+                  fontSize: { mobile: '12px', tablet: '14px' },
                   fontWeight: 400,
-                  lineHeight: '14px',
+                  lineHeight: { mobile: '14px', tablet: '18px' },
                   color: 'text.secondary',
                   backgroundColor: 'bg.white',
                   borderRight: '1px solid rgba(29, 30, 33, 0.1)'
@@ -55,10 +58,10 @@ function RecentCustomers({ customers }: RecentCustomersProps) {
               </TableCell>
               <TableCell
                 sx={{
-                  padding: '14px',
-                  fontSize: '12px',
+                  padding: { mobile: '14px', tablet: '20px' },
+                  fontSize: { mobile: '12px', tablet: '14px' },
                   fontWeight: 400,
-                  lineHeight: '14px',
+                  lineHeight: { mobile: '14px', tablet: '18px' },
                   color: 'text.secondary',
                   backgroundColor: 'bg.white',
                   borderRight: '1px solid rgba(29, 30, 33, 0.1)'
@@ -68,10 +71,10 @@ function RecentCustomers({ customers }: RecentCustomersProps) {
               </TableCell>
               <TableCell
                 sx={{
-                  padding: '14px',
-                  fontSize: '12px',
+                  padding: { mobile: '14px', tablet: '20px' },
+                  fontSize: { mobile: '12px', tablet: '14px' },
                   fontWeight: 400,
-                  lineHeight: '14px',
+                  lineHeight: { mobile: '14px', tablet: '18px' },
                   color: 'text.secondary',
                   backgroundColor: 'bg.white',
                   borderRight: '1px solid rgba(29, 30, 33, 0.1)'
@@ -87,27 +90,31 @@ function RecentCustomers({ customers }: RecentCustomersProps) {
                 <TableCell
                   sx={{
                     display: 'flex',
-                    flexDirection: 'column',
+                    flexDirection: { mobile: 'column', tablet: 'row' },
+                    alignItems: { mobile: 'start', tablet: 'center' },
                     gap: '8px',
-                    padding: '10px',
-                    fontSize: '12px',
+                    padding: { mobile: '10px', tablet: '20px' },
+                    fontSize: { mobile: '12px', tablet: '14px' },
                     fontWeight: 400,
-                    lineHeight: '14px',
+                    lineHeight: { mobile: '14px', tablet: '18px' },
                     borderRight: '1px solid rgba(29, 30, 33, 0.1)'
                   }}
                 >
                   <Avatar
                     src={row.photo}
-                    sx={{ marginRight: 2, width: 24, height: 24 }}
+                    sx={{
+                      width: { mobile: '24px', tablet: '36px' },
+                      height: { mobile: '24px', tablet: '36px' }
+                    }}
                   />
                   {row.name}
                 </TableCell>
                 <TableCell
                   sx={{
-                    padding: '10px',
-                    fontSize: '12px',
+                    padding: { mobile: '10px', tablet: '20px' },
+                    fontSize: { mobile: '12px', tablet: '14px' },
                     fontWeight: 400,
-                    lineHeight: '14px',
+                    lineHeight: { mobile: '14px', tablet: '18px' },
                     borderRight: '1px solid rgba(29, 30, 33, 0.1)'
                   }}
                 >
@@ -115,10 +122,10 @@ function RecentCustomers({ customers }: RecentCustomersProps) {
                 </TableCell>
                 <TableCell
                   sx={{
-                    padding: '10px',
-                    fontSize: '12px',
+                    padding: { mobile: '10px', tablet: '20px' },
+                    fontSize: { mobile: '12px', tablet: '14px' },
                     fontWeight: 400,
-                    lineHeight: '14px',
+                    lineHeight: { mobile: '14px', tablet: '18px' },
                     borderRight: '1px solid rgba(29, 30, 33, 0.1)'
                   }}
                 >
