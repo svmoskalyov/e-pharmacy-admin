@@ -111,7 +111,8 @@ function LoginPage() {
         sx={{
           position: 'absolute',
           bottom: { mobile: '-130px', tablet: '-20px' },
-          right: { mobile: '-160px', tablet: '-148px' }
+          right: { mobile: '-160px', tablet: '-148px' },
+          zIndex: -3,
         }}
       >
         <DecorLines />
