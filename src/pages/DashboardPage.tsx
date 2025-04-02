@@ -21,8 +21,17 @@ function DashboardPage() {
   return (
     <Box>
       <Statistics />
-      <RecentCustomers customers={customers} />
-      <IncomeExpenses incomeExpenses={incomeExpenses}/>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: { mobile: 'column', desktop: 'row' },
+          gap: { mobile: '40px', tablet: '20px' },
+          marginBottom: { mobile: '40px', tablet: '20px', desktop: '0px' }
+        }}
+      >
+        <RecentCustomers customers={customers} />
+        <IncomeExpenses incomeExpenses={incomeExpenses} />
+      </Box>
     </Box>
   )
 }
