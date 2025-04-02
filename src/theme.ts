@@ -12,6 +12,14 @@ declare module '@mui/material/styles' {
       main: string;
       light: string;
       dark: string;
+      grey: string;
+    },
+    bg: {
+      green: string;
+      grey: string;
+      blue: string;
+      silver: string;
+      white: string;
     },
     status: {
       completed: string;
@@ -77,20 +85,20 @@ const theme = createTheme({
   },
   palette: {
     accent: {
-      main: '#59B17A',
-      light: '#59B17A1A',
+      main: '#59B17A', //100%
+      light: '#59B17A1A', //10%
       dark: '#3F945F',
       contrastText: '#FFFFFF'
     },
     accent2: {
-      main: '#E85050',
-      light: '#E850501A',
+      main: '#E85050', //100%
+      light: '#E850501A', //10%
       dark: '#DA4A4A',
-      grey: '#1D1E211A'
+      grey: '#1D1E211A' //10%
     },
     text: {
-      primary: '#1D1E21',
-      secondary: '#1D1E2166'
+      primary: '#1D1E21', //100%
+      secondary: '#1D1E2166' //40%
     },
     bg: {
       green: '#E7F1ED',
