@@ -64,15 +64,14 @@ function IncomeExpenses({ incomeExpenses }: IncomeExpensesProps) {
                 <TableCell
                   sx={{
                     padding: { mobile: '14px', tablet: '20px' },
-                    fontSize: { mobile: '12px', tablet: '14px' },
-                    fontWeight: 400,
-                    lineHeight: { mobile: '14px', tablet: '18px' },
                     borderRight: '1px solid rgba(29, 30, 33, 0.1)'
                   }}
                 >
                   <Chip
                     label={row.type}
                     sx={{
+                      height: '23px',
+                      width: '80px',
                       backgroundColor: row.type === 'Income' ?
                         'accent.light' : row.type === 'Expense' ?
                           'accent2.light' : 'accent2.grey',
@@ -83,8 +82,6 @@ function IncomeExpenses({ incomeExpenses }: IncomeExpensesProps) {
                       fontWeight: 400,
                       lineHeight: { mobile: '12px', tablet: '14px' },
                       borderRadius: '40px',
-                      height: '23px',
-                      width: '80px'
                     }}
                   />
                 </TableCell>
