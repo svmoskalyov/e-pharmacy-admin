@@ -46,7 +46,11 @@ function SharedLayout() {
         open={isSidebarOpen}
         onClose={handleSidebarToggle}
         sx={{
-          '& .MuiDrawer-paper': { padding: '20px', backgroundColor: 'background.default' }
+          '& .MuiDrawer-paper':
+            {
+              padding: '20px',
+              backgroundColor: 'background.default'
+            }
         }}
       >
         <Box sx={{ width: '40px' }}>
