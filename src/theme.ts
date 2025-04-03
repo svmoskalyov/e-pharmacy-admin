@@ -22,11 +22,20 @@ declare module '@mui/material/styles' {
       white: string;
     },
     status: {
-      completed: string;
-      confirmed: string;
-      pending: string;
-      cancelled: string;
-      processing: string;
+      text: {
+        completed: string;
+        confirmed: string;
+        pending: string;
+        cancelled: string;
+        processing: string;
+      },
+      bg: {
+        completed: string;
+        confirmed: string;
+        pending: string;
+        cancelled: string;
+        processing: string;
+      }
     };
   }
 
@@ -51,11 +60,24 @@ declare module '@mui/material/styles' {
       white: string;
     },
     status?: {
-      completed: string;
-      confirmed: string;
-      pending: string;
-      cancelled: string;
-      processing: string;
+      text: {
+        completed: string;
+        confirmed: string;
+        pending: string;
+        cancelled: string;
+        processing: string;
+        shipped: string;
+        delivered: string;
+      },
+      bg: {
+        completed: string;
+        confirmed: string;
+        pending: string;
+        cancelled: string;
+        processing: string;
+        shipped: string;
+        delivered: string;
+      }
     };
   }
 
@@ -108,11 +130,24 @@ const theme = createTheme({
       white: '#FFFFFF'
     },
     status: {
-      completed: '#59B17A',
-      confirmed: '#8059E4',
-      pending: '#F79042',
-      cancelled: '#E85050',
-      processing: '#70A6E8'
+      text: {
+        completed: '#59B17A',
+        confirmed: '#8059E4',
+        pending: '#F79042',
+        cancelled: '#E85050',
+        processing: '#70A6E8',
+        shipped: '#00c9a7',
+        delivered: '#c493ff'
+      },
+      bg: {
+        completed: '#59B17A1A',
+        confirmed: '#8059E41A',
+        pending: '#F790421A',
+        cancelled: '#E850501A',
+        processing: '#70A6E81A',
+        shipped: '#00c9a71A',
+        delivered: '#c493ff1A'
+      }
     },
     error: {
       main: '#E85050'
