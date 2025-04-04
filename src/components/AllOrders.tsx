@@ -1,7 +1,9 @@
 import {
-  Paper, TableRow, TableHead, TableContainer, TableCell, TableBody,
-  Table, Avatar, Typography, Chip
+  Paper, TableRow, TableHead, TableContainer, TableBody, Table, Avatar, Chip
 } from '@mui/material'
+import TableName from './ui/TableName.tsx'
+import TableRowHead from './ui/TableRowHead.tsx'
+import TableRowCell from './ui/TableRowCell.tsx'
 
 interface AllOrdersProps {
   orders: {
@@ -26,19 +28,7 @@ function AllOrders({ orders }: AllOrdersProps) {
         overflow: 'hidden'
       }}
     >
-      <Typography
-        variant="h6"
-        component="div"
-        sx={{
-          padding: { mobile: '14px', tablet: '20px' },
-          fontSize: { mobile: '16px', tablet: '18px' },
-          fontWeight: 600,
-          lineHeight: { mobile: '20px', tablet: '24px' },
-          backgroundColor: 'bg.green'
-        }}
-      >
-        All Orders
-      </Typography>
+      <TableName>All Orders</TableName>
       <TableContainer
         sx={{
           maxHeight: { mobile: '460px', tablet: '502px', desktop: '541px' }
@@ -47,107 +37,36 @@ function AllOrders({ orders }: AllOrdersProps) {
         <Table stickyHeader aria-label="all orders table">
           <TableHead>
             <TableRow>
-              <TableCell
-                sx={{
-                  padding: { mobile: '14px', tablet: '20px' },
-                  fontSize: { mobile: '12px', tablet: '14px' },
-                  fontWeight: 400,
-                  lineHeight: { mobile: '14px', tablet: '18px' },
-                  textWrap: 'nowrap',
-                  color: 'text.secondary',
-                  backgroundColor: 'bg.white',
-                  borderRight: '1px solid rgba(29, 30, 33, 0.1)'
-                }}
-              >
+              <TableRowHead sx={{ textWrap: 'nowrap' }}>
                 User Info
-              </TableCell>
-              <TableCell
-                sx={{
-                  padding: { mobile: '14px', tablet: '20px' },
-                  fontSize: { mobile: '12px', tablet: '14px' },
-                  fontWeight: 400,
-                  lineHeight: { mobile: '14px', tablet: '18px' },
-                  textWrap: 'nowrap',
-                  color: 'text.secondary',
-                  backgroundColor: 'bg.white',
-                  borderRight: '1px solid rgba(29, 30, 33, 0.1)'
-                }}
-              >
+              </TableRowHead>
+              <TableRowHead sx={{ textWrap: 'nowrap' }}>
                 Address
-              </TableCell>
-              <TableCell
-                sx={{
-                  padding: { mobile: '14px', tablet: '20px' },
-                  fontSize: { mobile: '12px', tablet: '14px' },
-                  fontWeight: 400,
-                  lineHeight: { mobile: '14px', tablet: '18px' },
-                  textWrap: 'nowrap',
-                  color: 'text.secondary',
-                  backgroundColor: 'bg.white',
-                  borderRight: '1px solid rgba(29, 30, 33, 0.1)'
-                }}
-              >
+              </TableRowHead>
+              <TableRowHead sx={{ textWrap: 'nowrap' }}>
                 Products
-              </TableCell>
-              <TableCell
-                sx={{
-                  padding: { mobile: '14px', tablet: '20px' },
-                  fontSize: { mobile: '12px', tablet: '14px' },
-                  fontWeight: 400,
-                  lineHeight: { mobile: '14px', tablet: '18px' },
-                  textWrap: 'nowrap',
-                  color: 'text.secondary',
-                  backgroundColor: 'bg.white',
-                  borderRight: '1px solid rgba(29, 30, 33, 0.1)'
-                }}
-              >
+              </TableRowHead>
+              <TableRowHead sx={{ textWrap: 'nowrap' }}>
                 Order date
-              </TableCell>
-              <TableCell
-                sx={{
-                  padding: { mobile: '14px', tablet: '20px' },
-                  fontSize: { mobile: '12px', tablet: '14px' },
-                  fontWeight: 400,
-                  lineHeight: { mobile: '14px', tablet: '18px' },
-                  textWrap: 'nowrap',
-                  color: 'text.secondary',
-                  backgroundColor: 'bg.white',
-                  borderRight: '1px solid rgba(29, 30, 33, 0.1)'
-                }}
-              >
+              </TableRowHead>
+              <TableRowHead sx={{ textWrap: 'nowrap' }}>
                 Price
-              </TableCell>
-              <TableCell
-                sx={{
-                  padding: { mobile: '14px', tablet: '20px' },
-                  fontSize: { mobile: '12px', tablet: '14px' },
-                  fontWeight: 400,
-                  lineHeight: { mobile: '14px', tablet: '18px' },
-                  textWrap: 'nowrap',
-                  color: 'text.secondary',
-                  backgroundColor: 'bg.white',
-                  borderRight: '1px solid rgba(29, 30, 33, 0.1)'
-                }}
-              >
+              </TableRowHead>
+              <TableRowHead sx={{ textWrap: 'nowrap' }}>
                 Status
-              </TableCell>
+              </TableRowHead>
             </TableRow>
           </TableHead>
           <TableBody>
             {orders.map((row, i) => (
               <TableRow key={i}>
-                <TableCell
+                <TableRowCell
                   sx={{
                     display: 'flex',
                     flexDirection: { mobile: 'column', tablet: 'row' },
                     alignItems: { mobile: 'start', tablet: 'center' },
                     gap: '8px',
-                    padding: { mobile: '10px', tablet: '20px' },
-                    fontSize: { mobile: '12px', tablet: '14px' },
-                    fontWeight: 400,
-                    lineHeight: { mobile: '14px', tablet: '18px' },
-                    textWrap: 'nowrap',
-                    borderRight: '1px solid rgba(29, 30, 33, 0.1)'
+                    textWrap: 'nowrap'
                   }}
                 >
                   <Avatar
@@ -158,61 +77,20 @@ function AllOrders({ orders }: AllOrdersProps) {
                     }}
                   />
                   {row.name}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    padding: { mobile: '10px', tablet: '20px' },
-                    fontSize: { mobile: '12px', tablet: '14px' },
-                    fontWeight: 400,
-                    lineHeight: { mobile: '14px', tablet: '18px' },
-                    textWrap: 'nowrap',
-                    borderRight: '1px solid rgba(29, 30, 33, 0.1)'
-                  }}
-                >
+                </TableRowCell>
+                <TableRowCell sx={{ textWrap: 'nowrap' }}>
                   {row.address}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    padding: { mobile: '10px', tablet: '20px' },
-                    fontSize: { mobile: '12px', tablet: '14px' },
-                    fontWeight: 400,
-                    lineHeight: { mobile: '14px', tablet: '18px' },
-                    textWrap: 'nowrap',
-                    borderRight: '1px solid rgba(29, 30, 33, 0.1)'
-                  }}
-                >
+                </TableRowCell>
+                <TableRowCell sx={{ textWrap: 'nowrap' }}>
                   {row.products}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    padding: { mobile: '10px', tablet: '20px' },
-                    fontSize: { mobile: '12px', tablet: '14px' },
-                    fontWeight: 400,
-                    lineHeight: { mobile: '14px', tablet: '18px' },
-                    textWrap: 'nowrap',
-                    borderRight: '1px solid rgba(29, 30, 33, 0.1)'
-                  }}
-                >
+                </TableRowCell>
+                <TableRowCell sx={{ textWrap: 'nowrap' }}>
                   {row.order_date}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    padding: { mobile: '10px', tablet: '20px' },
-                    fontSize: { mobile: '12px', tablet: '14px' },
-                    fontWeight: 400,
-                    lineHeight: { mobile: '14px', tablet: '18px' },
-                    textWrap: 'nowrap',
-                    borderRight: '1px solid rgba(29, 30, 33, 0.1)'
-                  }}
-                >
+                </TableRowCell>
+                <TableRowCell sx={{ textWrap: 'nowrap' }}>
                   {row.price}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    padding: { mobile: '10px', tablet: '20px' },
-                    borderRight: '1px solid rgba(29, 30, 33, 0.1)'
-                  }}
-                >
+                </TableRowCell>
+                <TableRowCell>
                   <Chip
                     label={row.status}
                     sx={{
@@ -224,7 +102,7 @@ function AllOrders({ orders }: AllOrdersProps) {
                       backgroundColor: `status.bg.${row.status.toLowerCase()}`
                     }}
                   />
-                </TableCell>
+                </TableRowCell>
               </TableRow>
             ))}
           </TableBody>
