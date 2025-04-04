@@ -10,9 +10,6 @@ function DashboardPage() {
   const customers = useDataStore((state) => state.customers)
   const incomeExpenses = useDataStore((state) => state.incomeExpenses)
 
-  console.log('customers --', customers)
-  console.log('incomeExpenses --', incomeExpenses)
-
   useEffect(() => {
     if (!customers.length) getData('customers')
     if (!incomeExpenses.length) getData('incomeExpenses')
