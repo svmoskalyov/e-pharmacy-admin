@@ -1,7 +1,9 @@
 import {
-  Paper, TableRow, TableHead, TableContainer, TableCell, TableBody,
-  Table, Avatar, Typography
+  Avatar, Paper, Table, TableBody, TableContainer, TableHead, TableRow
 } from '@mui/material'
+import TableName from './ui/TableName.tsx'
+import TableRowHead from './ui/TableRowHead.tsx'
+import TableRowCell from './ui/TableRowCell.tsx'
 
 interface RecentCustomersProps {
   customers: {
@@ -17,87 +19,31 @@ function RecentCustomers({ customers }: RecentCustomersProps) {
     <Paper
       sx={{
         width: '100%',
+        maxWidth: { mobile: '335px', tablet: '704px', desktop: '630px' },
         borderRadius: '8px',
         boxShadow: 'none',
         overflow: 'hidden'
       }}
     >
-      <Typography
-        variant="h6"
-        component="div"
-        sx={{
-          padding: { mobile: '14px', tablet: '20px' },
-          fontSize: { mobile: '16px', tablet: '18px' },
-          fontWeight: 600,
-          lineHeight: { mobile: '20px', tablet: '24px' },
-          backgroundColor: 'bg.green'
-        }}
-      >
-        Recent Customers
-      </Typography>
-      <TableContainer
-        sx={{
-          maxHeight: { mobile: '422px', tablet: '512px' }
-        }}
-      >
+      <TableName>Recent Customers</TableName>
+      <TableContainer sx={{ maxHeight: { mobile: '460px', tablet: '512px' } }}>
         <Table stickyHeader aria-label="recent customers table">
           <TableHead>
             <TableRow>
-              <TableCell
-                sx={{
-                  padding: { mobile: '14px', tablet: '20px' },
-                  fontSize: { mobile: '12px', tablet: '14px' },
-                  fontWeight: 400,
-                  lineHeight: { mobile: '14px', tablet: '18px' },
-                  color: 'text.secondary',
-                  backgroundColor: 'bg.white',
-                  borderRight: '1px solid rgba(29, 30, 33, 0.1)'
-                }}
-              >
-                Name
-              </TableCell>
-              <TableCell
-                sx={{
-                  padding: { mobile: '14px', tablet: '20px' },
-                  fontSize: { mobile: '12px', tablet: '14px' },
-                  fontWeight: 400,
-                  lineHeight: { mobile: '14px', tablet: '18px' },
-                  color: 'text.secondary',
-                  backgroundColor: 'bg.white',
-                  borderRight: '1px solid rgba(29, 30, 33, 0.1)'
-                }}
-              >
-                Email
-              </TableCell>
-              <TableCell
-                sx={{
-                  padding: { mobile: '14px', tablet: '20px' },
-                  fontSize: { mobile: '12px', tablet: '14px' },
-                  fontWeight: 400,
-                  lineHeight: { mobile: '14px', tablet: '18px' },
-                  color: 'text.secondary',
-                  backgroundColor: 'bg.white',
-                  borderRight: '1px solid rgba(29, 30, 33, 0.1)'
-                }}
-              >
-                Spent
-              </TableCell>
+              <TableRowHead>Name</TableRowHead>
+              <TableRowHead>Email</TableRowHead>
+              <TableRowHead>Spent</TableRowHead>
             </TableRow>
           </TableHead>
           <TableBody>
             {customers.map((row, i) => (
               <TableRow key={i}>
-                <TableCell
+                <TableRowCell
                   sx={{
                     display: 'flex',
                     flexDirection: { mobile: 'column', tablet: 'row' },
                     alignItems: { mobile: 'start', tablet: 'center' },
-                    gap: '8px',
-                    padding: { mobile: '10px', tablet: '20px' },
-                    fontSize: { mobile: '12px', tablet: '14px' },
-                    fontWeight: 400,
-                    lineHeight: { mobile: '14px', tablet: '18px' },
-                    borderRight: '1px solid rgba(29, 30, 33, 0.1)'
+                    gap: '8px'
                   }}
                 >
                   <Avatar
@@ -108,29 +54,9 @@ function RecentCustomers({ customers }: RecentCustomersProps) {
                     }}
                   />
                   {row.name}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    padding: { mobile: '10px', tablet: '20px' },
-                    fontSize: { mobile: '12px', tablet: '14px' },
-                    fontWeight: 400,
-                    lineHeight: { mobile: '14px', tablet: '18px' },
-                    borderRight: '1px solid rgba(29, 30, 33, 0.1)'
-                  }}
-                >
-                  {row.email}
-                </TableCell>
-                <TableCell
-                  sx={{
-                    padding: { mobile: '10px', tablet: '20px' },
-                    fontSize: { mobile: '12px', tablet: '14px' },
-                    fontWeight: 400,
-                    lineHeight: { mobile: '14px', tablet: '18px' },
-                    borderRight: '1px solid rgba(29, 30, 33, 0.1)'
-                  }}
-                >
-                  {row.spent}
-                </TableCell>
+                </TableRowCell>
+                <TableRowCell>{row.email}</TableRowCell>
+                <TableRowCell>{row.spent}</TableRowCell>
               </TableRow>
             ))}
           </TableBody>
