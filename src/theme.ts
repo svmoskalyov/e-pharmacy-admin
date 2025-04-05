@@ -36,7 +36,17 @@ declare module '@mui/material/styles' {
         cancelled: string;
         processing: string;
       }
-    };
+    },
+    acton: {
+      text: {
+        edit: string;
+        delete: string;
+      },
+      bg: {
+        edit: string;
+        delete: string;
+      }
+    }
   }
 
   interface PaletteOptions {
@@ -78,7 +88,17 @@ declare module '@mui/material/styles' {
         shipped: string;
         delivered: string;
       }
-    };
+    },
+    acton?: {
+      text: {
+        edit: string;
+        delete: string;
+      },
+      bg: {
+        edit: string;
+        delete: string;
+      }
+    }
   }
 
   interface TypeText {
@@ -147,6 +167,16 @@ const theme = createTheme({
         processing: '#70A6E81A',
         shipped: '#00c9a71A',
         delivered: '#c493ff1A'
+      }
+    },
+    acton: {
+      text: {
+        edit: '#59B17A', //100%
+        delete: '#E85050' //100%
+      },
+      bg: {
+        edit: '#59b17a80', //50%
+        delete: '#e8505080' //50%
       }
     },
     error: {
