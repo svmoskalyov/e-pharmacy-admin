@@ -26,6 +26,7 @@ type Orders = {
   'order_date': string
 }
 type Products = {
+  'id': string
   'photo': string
   'name': string
   'suppliers': string
@@ -34,6 +35,7 @@ type Products = {
   'category': string
 }
 type Suppliers = {
+  'id': string
   'name': string
   'address': string
   'suppliers': string
