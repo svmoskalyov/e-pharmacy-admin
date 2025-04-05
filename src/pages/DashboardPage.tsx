@@ -16,7 +16,13 @@ function DashboardPage() {
   }, [customers.length, incomeExpenses.length, getData])
 
   return (
-    <Box>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
+      }}
+    >
       <Statistics />
       <Box
         sx={{
