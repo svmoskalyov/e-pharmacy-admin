@@ -5,7 +5,7 @@ import SharedLayout from './layouts/SharedLayout.tsx'
 import DashboardPage from './pages/DashboardPage.tsx'
 import AllOrdersPage from './pages/AllOrdersPage.tsx'
 import AllProductsPage from './pages/AllProductsPage.tsx'
-import CustomersDataPage from './pages/CustomersDataPage.tsx'
+import AllCustomersPage from './pages/AllCustomersPage.tsx'
 import AllSuppliersPage from './pages/AllSuppliersPage.tsx'
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
             <Route path="orders" element={<AllOrdersPage />} />
             <Route path="products" element={<AllProductsPage />} />
             <Route path="suppliers" element={<AllSuppliersPage />} />
-            <Route path="customers" element={<CustomersDataPage />} />
+            <Route path="customers" element={<AllCustomersPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         )}
