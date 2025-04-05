@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Box } from '@mui/material'
+import { useDataStore } from '../stores/dataStore.ts'
 import Filter from '../components/Filter.tsx'
 import AllOrders from '../components/AllOrders.tsx'
-import { useDataStore } from '../stores/dataStore.ts'
 import Pagination from '../components/Pagination.tsx'
 
 function AllOrdersPage() {
