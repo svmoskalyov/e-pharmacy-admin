@@ -28,7 +28,7 @@ function AllOrders({ orders }: AllOrdersProps) {
         overflow: 'hidden'
       }}
     >
-      <TableName>All Orders</TableName>
+      <TableName>All orders</TableName>
       <TableContainer
         sx={{
           maxHeight: { mobile: '460px', tablet: '502px', desktop: '541px' }
