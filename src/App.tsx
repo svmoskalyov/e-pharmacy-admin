@@ -1,12 +1,14 @@
+import { lazy } from 'react'
 import { Navigate, Route, Routes } from 'react-router'
 import { useAuthStore } from './stores/authStore.ts'
 import LoginPage from './pages/LoginPage.tsx'
-import SharedLayout from './layouts/SharedLayout.tsx'
-import DashboardPage from './pages/DashboardPage.tsx'
-import AllOrdersPage from './pages/AllOrdersPage.tsx'
-import AllProductsPage from './pages/AllProductsPage.tsx'
-import AllCustomersPage from './pages/AllCustomersPage.tsx'
-import AllSuppliersPage from './pages/AllSuppliersPage.tsx'
+
+const SharedLayout = lazy(() => import('./layouts/SharedLayout.tsx'))
+const DashboardPage = lazy(() => import('./pages/DashboardPage.tsx'))
+const AllOrdersPage = lazy(() => import('./pages/AllOrdersPage.tsx'))
+const AllProductsPage = lazy(() => import('./pages/AllProductsPage.tsx'))
+const AllCustomersPage = lazy(() => import('./pages/AllCustomersPage.tsx'))
+const AllSuppliersPage = lazy(() => import('./pages/AllSuppliersPage.tsx'))
 
 function App() {
   const isAuth = useAuthStore((state) => state.isAuth)
