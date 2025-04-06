@@ -20,7 +20,7 @@ function DashboardPage() {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
       }}
     >
       <Statistics />
@@ -29,7 +29,8 @@ function DashboardPage() {
           display: 'flex',
           flexDirection: { mobile: 'column', desktop: 'row' },
           gap: { mobile: '40px', tablet: '20px' },
-          marginBottom: { mobile: '40px', tablet: '20px', desktop: '0px' }
+          marginBottom: { mobile: '40px', tablet: '20px', desktop: '0px' },
+          width: '100%',
         }}
       >
         <RecentCustomers customers={customers} />

@@ -5,19 +5,35 @@ import Filter from '../components/Filter.tsx'
 import Pagination from '../components/Pagination.tsx'
 import AllSuppliers from '../components/AllSuppliers.tsx'
 
+type Suppliers = {
+  'id': string
+  'name': string
+  'address': string
+  'suppliers': string
+  'date': string
+  'amount': string
+  'status': string
+}
+
 function AllSuppliersPage() {
   const getData = useDataStore((state) => state.getData)
   const suppliers = useDataStore((state) => state.suppliers)
+  const [filtered, setFiltered] = useState<Suppliers[]>(suppliers)
   const [currentPage, setCurrentPage] = useState<number>(1)
   const itemsPerPage = 5
 
-  const totalPages = Math.ceil(suppliers.length / itemsPerPage)
+  const totalPages = Math.ceil(filtered.length / itemsPerPage)
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
-  const supplierItems = suppliers.slice(startIndex, endIndex)
+  const supplierItems = filtered.slice(startIndex, endIndex)
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page)
+  }
+
+  const handleFilter = (newFilteredData: Suppliers[]) => {
+    setFiltered(newFilteredData)
+    setCurrentPage(1)
   }
 
   useEffect(() => {
@@ -32,13 +48,20 @@ function AllSuppliersPage() {
         alignItems: 'center'
       }}
     >
-      <Filter />
-      <AllSuppliers suppliers={supplierItems} />
-      <Pagination
-        totalPages={totalPages}
-        currentPage={currentPage}
-        onPageChange={handlePageChange}
+      <Filter
+        data={suppliers}
+        keysToSearch={['name']}
+        onFilter={handleFilter}
+        placeholder="User Name"
       />
+      <AllSuppliers suppliers={supplierItems} />
+      {filtered.length > itemsPerPage && (
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
+      )}
     </Box>
   )
 }
