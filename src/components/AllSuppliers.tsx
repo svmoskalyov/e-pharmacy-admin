@@ -40,7 +40,7 @@ function AllSuppliers({ suppliers }: AllSuppliersProps) {
           maxHeight: { mobile: '460px', tablet: '502px', desktop: '541px' }
         }}
       >
-        <Table stickyHeader aria-label="all orders table">
+        <Table stickyHeader aria-label="all suppliers table">
           <TableHead>
             <TableRow>
               <TableRowHead sx={{ textWrap: 'nowrap' }}>
