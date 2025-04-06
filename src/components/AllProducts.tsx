@@ -19,7 +19,6 @@ interface AllProductsProps {
 }
 
 function AllProducts({ products }: AllProductsProps) {
-
   const handleEdit = (id: string) => {
     console.log('Edit product with id:', id)
   }
@@ -44,7 +43,7 @@ function AllProducts({ products }: AllProductsProps) {
           maxHeight: { mobile: '460px', tablet: '502px', desktop: '541px' }
         }}
       >
-        <Table stickyHeader aria-label="all orders table">
+        <Table stickyHeader aria-label="all products table">
           <TableHead>
             <TableRow>
               <TableRowHead sx={{ textWrap: 'nowrap' }}>
