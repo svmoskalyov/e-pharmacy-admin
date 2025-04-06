@@ -34,7 +34,11 @@ function SharedLayout() {
           component="main"
           sx={{
             gridArea: 'main',
-            padding: { mobile: '16px', tablet: '32px', desktop: '20px' }
+            padding: {
+              mobile: '20px',
+              tablet: '20px 32px 32px',
+              desktop: '20px 40px 40px'
+            },
           }}
         >
           <Outlet />
