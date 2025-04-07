@@ -37,8 +37,16 @@ function AllProductsPage() {
   }
 
   useEffect(() => {
-    if (!products.length) getData('products')
+    if (!products.length) {
+      console.log('products is empty')
+      getData('products')
+    }
+    if (products.length !== filtered.length) {
+      setFiltered(products)
+    }
   }, [products.length, getData])
+
+  console.log(products.length)
 
   return (
     <Box
