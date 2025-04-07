@@ -38,6 +38,9 @@ function AllSuppliersPage() {
 
   useEffect(() => {
     if (!suppliers.length) getData('suppliers')
+    if (suppliers.length !== filtered.length) {
+      setFiltered(suppliers)
+    }
   }, [suppliers.length, getData])
 
   return (
