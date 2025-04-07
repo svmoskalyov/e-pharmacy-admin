@@ -27,6 +27,7 @@ function DashboardPage() {
       <Box
         sx={{
           display: 'flex',
+          alignItems: 'center',
           flexDirection: { mobile: 'column', desktop: 'row' },
           gap: { mobile: '40px', tablet: '20px' },
           marginBottom: { mobile: '40px', tablet: '20px', desktop: '0px' },
