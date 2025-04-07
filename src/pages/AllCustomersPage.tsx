@@ -38,6 +38,9 @@ function AllCustomersPage() {
 
   useEffect(() => {
     if (!customers.length) getData('customers')
+    if (customers.length !== filtered.length) {
+      setFiltered(customers)
+    }
   }, [customers.length, getData])
 
   return (
