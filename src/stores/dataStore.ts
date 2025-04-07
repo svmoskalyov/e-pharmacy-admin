@@ -1,8 +1,15 @@
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 import { fetchData } from '../firebase/data.ts'
+import {
+  addItemToArray,
+  removeItemByIdFromArray,
+  editItemInArray,
+  Identifiable
+} from '../utils/arrayUtils.ts'
 
-type Customers = {
+interface Customers extends Identifiable {
+  'id': string
   'photo': string
   'name': string
   'email': string
@@ -11,12 +18,16 @@ type Customers = {
   'address': string
   'register_date': string
 }
-type IncomeExpenses = {
+
+interface IncomeExpenses extends Identifiable {
+  'id': string
   'name': string
   'amount': string
   'type': string
 }
-type Orders = {
+
+interface Orders extends Identifiable {
+  'id': string
   'photo': string
   'name': string
   'address': string
@@ -25,7 +36,8 @@ type Orders = {
   'status': string
   'order_date': string
 }
-type Products = {
+
+interface Products extends Identifiable {
   'id': string
   'photo': string
   'name': string
@@ -34,7 +46,8 @@ type Products = {
   'price': string
   'category': string
 }
-type Suppliers = {
+
+interface Suppliers extends Identifiable {
   'id': string
   'name': string
   'address': string
@@ -43,6 +56,9 @@ type Suppliers = {
   'amount': string
   'status': string
 }
+
+type ArrayName = 'customers' | 'incomeExpenses' | 'orders' |
+  'products' | 'suppliers'
 
 type State = {
   customers: Customers[]
@@ -56,6 +72,12 @@ type State = {
 
 type Actions = {
   getData: (base: string) => void
+  addItem: <T extends Identifiable>(
+    arrayName: ArrayName, newItem: T) => void
+  removeItemById: <T extends Identifiable>(
+    arrayName: ArrayName, idToRemove: T['id']) => void
+  editItem: <T extends Identifiable>(
+    arrayName: ArrayName, updatedItem: T) => void
   setIsLoading: (isLoading: boolean) => void
   setError: (error: string | null) => void
 }
@@ -85,6 +107,24 @@ export const useDataStore = create<State & Actions>()(
           set({ isLoading: false })
         }
       },
+      addItem: <T extends Identifiable>(
+        arrayName: ArrayName, newItem: T) =>
+        set((state) => ({
+          [arrayName]: addItemToArray<T>(
+            (state[arrayName] as unknown) as T[], newItem)
+        })),
+      removeItemById: <T extends Identifiable>(
+        arrayName: ArrayName, idToRemove: T['id']) =>
+        set((state) => ({
+          [arrayName]: removeItemByIdFromArray<T>(
+            (state[arrayName] as unknown) as T[], idToRemove)
+        })),
+      editItem: <T extends Identifiable>(
+        arrayName: ArrayName, updatedItem: T) =>
+        set((state) => ({
+          [arrayName]: editItemInArray<T>(
+            (state[arrayName] as unknown) as T[], updatedItem)
+        })),
       setIsLoading: isLoading => set({ isLoading }),
       setError: error => set({ error })
     }),
