@@ -38,6 +38,9 @@ function AllOrdersPage() {
 
   useEffect(() => {
     if (!orders.length) getData('orders')
+    if (orders.length !== filtered.length) {
+      setFiltered(orders)
+    }
   }, [orders.length, getData])
 
   return (
