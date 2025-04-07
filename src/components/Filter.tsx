@@ -10,11 +10,11 @@ interface FilterProps<T> {
 }
 
 function Filter<T>({
-                  data,
-                  keysToSearch,
-                  onFilter,
-                  placeholder = 'Enter search term'
-                }: FilterProps<T>) {
+                     data,
+                     keysToSearch,
+                     onFilter,
+                     placeholder = 'Enter search term'
+                   }: FilterProps<T>) {
   const [searchTerm, setSearchTerm] = useState('')
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -22,6 +22,7 @@ function Filter<T>({
   }
 
   const handleSearchClick = () => {
+    if (searchTerm.trim() === '') return
     filterData(searchTerm)
   }
 
