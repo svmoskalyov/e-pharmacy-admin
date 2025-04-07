@@ -2,6 +2,7 @@ import {
   Paper, TableRow, TableHead, TableContainer, TableBody, Table, IconButton
 } from '@mui/material'
 import { Icon } from '@iconify/react'
+import { useDataStore } from '../stores/dataStore.ts'
 import TableName from './ui/TableName.tsx'
 import TableRowHead from './ui/TableRowHead.tsx'
 import TableRowCell from './ui/TableRowCell.tsx'
@@ -19,12 +20,16 @@ interface AllProductsProps {
 }
 
 function AllProducts({ products }: AllProductsProps) {
+  const removeItemById = useDataStore((state) => state.removeItemById)
+
   const handleEdit = (id: string) => {
     console.log('Edit product with id:', id)
+    //open modal edit product
   }
 
   const handleDelete = (id: string) => {
     console.log('Delete product with id:', id)
+    removeItemById('products', id)
   }
 
   return (
