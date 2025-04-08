@@ -18,7 +18,7 @@ function StatisticItem({ title = 'title', count = 0 }: StatisticItemProps) {
         borderRadius: '8px',
         borderWidth: '1px',
         borderStyle: 'solid',
-        borderColor: 'accent2.grey'
+        borderColor: 'accent2.gray'
       }}
     >
       <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
