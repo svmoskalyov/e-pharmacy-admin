@@ -30,7 +30,7 @@ const AuthTextField = styled(TextField)(({ theme }) => ({
       backgroundColor: theme.palette.bg.white,
       borderRadius: '60px',
       '& .MuiOutlinedInput-notchedOutline': {
-        borderColor: theme.palette.accent2.grey,
+        borderColor: theme.palette.accent2.gray,
         borderWidth: '1px'
       },
       '&.Mui-focused': {
