@@ -43,7 +43,7 @@ function IncomeExpenses({ incomeExpenses }: IncomeExpensesProps) {
                       width: '80px',
                       backgroundColor: row.type === 'Income' ?
                         'accent.light' : row.type === 'Expense' ?
-                          'accent2.light' : 'accent2.grey',
+                          'accent2.light' : 'accent2.gray',
                       color: row.type === 'Income' ?
                         'accent.main' : row.type === 'Expense' ?
                           'accent2.main' : 'text.primary',
