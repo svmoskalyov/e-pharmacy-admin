@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
-import {
-  Box, List, ListItem, ListItemButton
-} from '@mui/material'
+import { Box, List, ListItem, ListItemButton } from '@mui/material'
 import { Icon } from '@iconify/react'
 import ButtonLogout from './ui/ButtonLogout.tsx'
 
@@ -63,7 +61,7 @@ function Sidebar({ onClose }: SidebarProps) {
                   padding: '0',
                   width: '40px',
                   height: '40px',
-                  color: 'bg.grey',
+                  color: 'bg.gray',
                   backgroundColor: 'bg.white',
                   borderRadius: '50px',
                   dropShadow: '0px -1px 7px 0px rgba(71, 71, 71, 0.05)'
