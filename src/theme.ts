@@ -12,11 +12,11 @@ declare module '@mui/material/styles' {
       main: string;
       light: string;
       dark: string;
-      grey: string;
+      gray: string;
     },
     bg: {
       green: string;
-      grey: string;
+      gray: string;
       blue: string;
       silver: string;
       white: string;
@@ -60,11 +60,11 @@ declare module '@mui/material/styles' {
       main: string;
       light: string;
       dark: string;
-      grey: string;
+      gray: string;
     },
     bg?: {
       green: string;
-      grey: string;
+      gray: string;
       blue: string;
       silver: string;
       white: string;
@@ -136,7 +136,7 @@ const theme = createTheme({
       main: '#E85050', //100%
       light: '#E850501A', //10%
       dark: '#DA4A4A',
-      grey: '#1D1E211A' //10%
+      gray: '#1D1E211A' //10%
     },
     text: {
       primary: '#1D1E21', //100%
@@ -144,7 +144,7 @@ const theme = createTheme({
     },
     bg: {
       green: '#E7F1ED',
-      grey: '#DCDDDF',
+      gray: '#DCDDDF',
       blue: '#F7F8FA',
       silver: '#F9F9F9',
       white: '#FFFFFF'
