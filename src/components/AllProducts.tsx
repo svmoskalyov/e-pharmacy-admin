@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   Paper, TableRow, TableHead, TableContainer, TableBody, Table, IconButton
 } from '@mui/material'
@@ -6,9 +7,8 @@ import { useDataStore } from '../stores/dataStore.ts'
 import TableName from './ui/TableName.tsx'
 import TableRowHead from './ui/TableRowHead.tsx'
 import TableRowCell from './ui/TableRowCell.tsx'
-import { useState } from 'react'
-import ProductForm from './ProductForm.tsx'
 import Popup from './ui/Popup.tsx'
+import ProductForm from './ProductForm.tsx'
 
 interface AllProductsProps {
   products: {
@@ -22,9 +22,19 @@ interface AllProductsProps {
   }[]
 }
 
+interface Product {
+  id: string
+  photo: string
+  name: string
+  suppliers: string
+  stock: string
+  price: string
+  category: string
+}
+
 function AllProducts({ products }: AllProductsProps) {
   const [openPopup, setOpenPopup] = useState<boolean>(false)
-  const [productId, setProductId] = useState<string>('')
+  const [productItem, setProductItem] = useState<Product>()
   const removeItemById = useDataStore((state) => state.removeItemById)
 
   const handleModal = () => {
@@ -32,7 +42,7 @@ function AllProducts({ products }: AllProductsProps) {
   }
 
   const handleEdit = (id: string) => {
-    setProductId(id)
+    setProductItem(products.find((item) => item.id === id))
     handleModal()
   }
 
@@ -159,7 +169,7 @@ function AllProducts({ products }: AllProductsProps) {
       </Paper>
 
       <Popup open={openPopup} onClose={handleModal} title={'Edit product'}>
-        <ProductForm prodId={productId} onClose={handleModal} />
+        <ProductForm prodItem={productItem} onClose={handleModal} />
       </Popup>
     </>
   )
