@@ -46,7 +46,6 @@ function Filter<T>({
       direction="row"
       justifyContent="space-between"
       alignItems="center"
-      marginBottom="40px"
       sx={{ gap: { mobile: '8px', tablet: '16px' } }}
     >
       <OutlinedInput
