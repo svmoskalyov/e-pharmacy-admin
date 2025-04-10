@@ -121,120 +121,153 @@ function ProductForm({ prodItem, onClose }: ProductFormProps) {
       component="form"
       onSubmit={handleSubmit}
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '14px',
-        marginTop: { mobile: '20px', tablet: '40px' }
+        paddingTop: { mobile: '20px', tablet: '40px' },
+        paddingBottom: { mobile: '0', tablet: '20px' }
       }}
     >
-      <FormControl fullWidth required>
-        <StyledOutlinedInput
-          name="name"
-          value={prodNew.name}
-          onChange={handleChange}
-          placeholder="Product Info"
-        />
-      </FormControl>
-      <FormControl fullWidth required>
-        <Select
-          displayEmpty
-          name="category"
-          value={prodNew.category}
-          onChange={handleChange}
-          input={<StyledOutlinedInput />}
-          MenuProps={{
-            PaperProps: {
-              style: {
-                maxHeight: '140px',
-                backgroundColor: '#59B17A',
-                borderRadius: '15px'
-              }
-            }
-          }}
-          renderValue={(selected) => {
-            if (selected.length === 0) {
-              return (
-                <span
-                  style={{
-                    fontSize: '12px',
-                    fontWeight: 400,
-                    lineHeight: '18px',
-                    color: '#1D1E2166'
-                  }}
-                >
-                  Category
-                </span>
-              )
-            }
-            return selected
-          }}
-        >
-          {prodNewCategories.map((name) => (
-            <MenuItem
-              key={name}
-              value={name}
-              sx={{
-                minHeight: '18px',
-                color: '#acd8bc',
-                padding: '4px 18px',
-                '&:hover': {
-                  color: 'accent.contrastText',
-                  backgroundColor: 'transparent'
-                },
-                '&.Mui-selected': {
-                  color: 'accent.contrastText',
-                  backgroundColor: 'transparent',
-                  '&:hover': {
-                    backgroundColor: 'transparent'
-                  }
-                },
-                '& .MuiTypography-root': {
-                  fontSize: '12px',
-                  fontWeight: 400,
-                  lineHeight: '18px',
-                  color: 'accent.contrastText'
-                }
-              }}
-            >
-              {name}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <FormControl fullWidth required>
-        <StyledOutlinedInput
-          name="suppliers"
-          value={prodNew.suppliers}
-          onChange={handleChange}
-          placeholder="Suppliers"
-        />
-      </FormControl>
-      <FormControl fullWidth required>
-        <StyledOutlinedInput
-          name="stock"
-          value={prodNew.stock}
-          onChange={handleChange}
-          type="number"
-          placeholder="Stock"
-        />
-      </FormControl>
-      <FormControl fullWidth required>
-        <StyledOutlinedInput
-          name="price"
-          value={prodNew.price}
-          onChange={handleChange}
-          type="number"
-          placeholder="Price"
-        />
-      </FormControl>
-
       <Box
         sx={{
           display: 'flex',
-          gap: '8px',
-          marginTop: { mobile: '20px', tablet: '40px' }
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          rowGap: { mobile: '14px', tablet: '14px' },
+          columnGap: { mobile: '14px', tablet: '8px' },
+          paddingBottom: '40px'
         }}
       >
+        <FormControl
+          fullWidth
+          required
+          sx={{
+            width: { mobile: '100%', tablet: '224px' }
+          }}
+        >
+          <StyledOutlinedInput
+            name="name"
+            value={prodNew.name}
+            onChange={handleChange}
+            placeholder="Product Info"
+          />
+        </FormControl>
+        <FormControl
+          fullWidth
+          required
+          sx={{
+            width: { mobile: '100%', tablet: '224px' }
+          }}
+        >
+          <Select
+            displayEmpty
+            name="category"
+            value={prodNew.category}
+            onChange={handleChange}
+            input={<StyledOutlinedInput />}
+            MenuProps={{
+              PaperProps: {
+                style: {
+                  maxHeight: '140px',
+                  backgroundColor: '#59B17A',
+                  borderRadius: '15px'
+                }
+              }
+            }}
+            renderValue={(selected) => {
+              if (selected.length === 0) {
+                return (
+                  <span
+                    style={{
+                      fontSize: '12px',
+                      fontWeight: 400,
+                      lineHeight: '18px',
+                      color: '#1D1E2166'
+                    }}
+                  >
+                  Category
+                </span>
+                )
+              }
+              return selected
+            }}
+          >
+            {prodNewCategories.map((name) => (
+              <MenuItem
+                key={name}
+                value={name}
+                sx={{
+                  minHeight: '18px',
+                  color: '#acd8bc',
+                  padding: '4px 18px',
+                  '&:hover': {
+                    color: 'accent.contrastText',
+                    backgroundColor: 'transparent'
+                  },
+                  '&.Mui-selected': {
+                    color: 'accent.contrastText',
+                    backgroundColor: 'transparent',
+                    '&:hover': {
+                      backgroundColor: 'transparent'
+                    }
+                  },
+                  '& .MuiTypography-root': {
+                    fontSize: '12px',
+                    fontWeight: 400,
+                    lineHeight: '18px',
+                    color: 'accent.contrastText'
+                  }
+                }}
+              >
+                {name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <FormControl
+          fullWidth
+          required
+          sx={{
+            width: { mobile: '100%', tablet: '224px' }
+          }}
+        >
+          <StyledOutlinedInput
+            name="suppliers"
+            value={prodNew.suppliers}
+            onChange={handleChange}
+            placeholder="Suppliers"
+          />
+        </FormControl>
+        <FormControl
+          fullWidth
+          required
+          sx={{
+            width: { mobile: '100%', tablet: '224px' }
+          }}
+        >
+          <StyledOutlinedInput
+            name="stock"
+            value={prodNew.stock}
+            onChange={handleChange}
+            type="number"
+            placeholder="Stock"
+          />
+        </FormControl>
+        <FormControl
+          fullWidth
+          required
+          sx={{
+            width: { mobile: '100%', tablet: '224px' }
+          }}
+        >
+          <StyledOutlinedInput
+            name="price"
+            value={prodNew.price}
+            onChange={handleChange}
+            type="number"
+            placeholder="Price"
+          />
+        </FormControl>
+      </Box>
+
+      <Box sx={{ display: 'flex', gap: '8px' }}>
         <StyledButton
           type="submit"
           variant="contained"
