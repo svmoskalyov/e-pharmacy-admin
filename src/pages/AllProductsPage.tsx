@@ -26,10 +26,11 @@ function AllProductsPage() {
   const [openPopup, setOpenPopup] = useState<boolean>(false)
 
   const itemsPerPage = 5
+  const filteredSorted = filtered.toReversed()
   const totalPages = Math.ceil(filtered.length / itemsPerPage)
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
-  const productItems = filtered.slice(startIndex, endIndex)
+  const productItems = filteredSorted.slice(startIndex, endIndex)
 
   const handleModal = () => {
     setOpenPopup(!openPopup)
@@ -45,11 +46,12 @@ function AllProductsPage() {
   }
 
   useEffect(() => {
+    setFiltered(products)
+  }, [products])
+
+  useEffect(() => {
     if (!products.length) getData('products')
-    if (products.length !== filtered.length) {
-      setFiltered(products)
-    }
-  }, [products.length, getData])
+  }, [getData, products.length])
 
   return (
     <>
@@ -136,7 +138,7 @@ function AllProductsPage() {
       </Box>
 
       <Popup open={openPopup} onClose={handleModal} title={'Add a new product'}>
-        <ProductForm new onClose={handleModal} />
+        <ProductForm onClose={handleModal} />
       </Popup>
     </>
   )
