@@ -3,6 +3,7 @@ import {
   Box, Button, FormControl, MenuItem, OutlinedInput, Select,
   SelectChangeEvent, styled
 } from '@mui/material'
+import { useDataStore } from '../stores/dataStore.ts'
 
 const prodNewCategories = [
   'Medicine', 'Head', 'Hand', 'Dental Care', 'Skin Care', 'Eye Care',
@@ -42,7 +43,6 @@ const StyledButton = styled(Button)({
 })
 
 interface ProductFormProps {
-  new?: boolean
   prodItem?: {
     id: string
     photo: string
@@ -55,7 +55,7 @@ interface ProductFormProps {
   onClose: () => void
 }
 
-interface ProductNew {
+interface ProdForm {
   name: string
   suppliers: string
   stock: string
@@ -63,16 +63,23 @@ interface ProductNew {
   category: string
 }
 
-function ProductForm({ new: isNew = false, prodItem, onClose }: ProductFormProps) {
-  const [prodNew, setProdNew] = useState<ProductNew>(
-    !isNew ? prodItem :
-      ({
-        name: '',
-        suppliers: '',
-        stock: '',
-        price: '',
-        category: ''
-      })
+function ProductForm({ prodItem, onClose }: ProductFormProps) {
+  const addItem = useDataStore((state) => state.addItem)
+  const editItem = useDataStore((state) => state.editItem)
+  const [prodNew, setProdNew] = useState<ProdForm>(
+    prodItem ? {
+      name: prodItem.name,
+      suppliers: prodItem.suppliers,
+      stock: prodItem.stock,
+      price: prodItem.price,
+      category: prodItem.category
+    } : {
+      name: '',
+      suppliers: '',
+      stock: '',
+      price: '',
+      category: ''
+    }
   )
 
   const handleChange = (event: ChangeEvent<HTMLInputElement |
@@ -86,28 +93,27 @@ function ProductForm({ new: isNew = false, prodItem, onClose }: ProductFormProps
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
-    // console.log(prodNew)
-
-    if (isNew) {
-      // Add new logic
+    if (prodItem) {
+      const productNew = {
+        ...prodNew,
+        id: prodItem?.id,
+        photo: prodItem?.photo
+      }
+      editItem('products', productNew)
+    } else {
       const newId = new Date().getTime().toString()
       const productNew = { ...prodNew, id: newId, photo: '' }
-      console.log('productNew', productNew)
-      // addItem('products', productNew)
-    } else {
-      // Edit logic
-      console.log('productEdit', prodNew)
-      // editItem('products', prodNew);
+      addItem('products', productNew)
     }
 
-    // setProdNew({
-    //   name: '',
-    //   suppliers: '',
-    //   stock: '',
-    //   price: '',
-    //   category: '',
-    // });
-    // onClose()
+    setProdNew({
+      name: '',
+      suppliers: '',
+      stock: '',
+      price: '',
+      category: ''
+    })
+    onClose()
   }
 
   return (
@@ -243,7 +249,7 @@ function ProductForm({ new: isNew = false, prodItem, onClose }: ProductFormProps
             }
           }}
         >
-          {isNew ? 'Add' : 'Save'}
+          {prodItem ? 'Save' : 'Add'}
         </StyledButton>
         <StyledButton
           variant="contained"
