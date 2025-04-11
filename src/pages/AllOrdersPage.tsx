@@ -20,12 +20,13 @@ function AllOrdersPage() {
   const orders = useDataStore((state) => state.orders)
   const [filtered, setFiltered] = useState<Orders[]>(orders)
   const [currentPage, setCurrentPage] = useState<number>(1)
-  const itemsPerPage = 5
 
+  const itemsPerPage = 5
+  const filteredSorted = filtered.toReversed()
   const totalPages = Math.ceil(filtered.length / itemsPerPage)
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
-  const orderItems = filtered.slice(startIndex, endIndex)
+  const orderItems = filteredSorted.slice(startIndex, endIndex)
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page)
@@ -37,10 +38,11 @@ function AllOrdersPage() {
   }
 
   useEffect(() => {
+    setFiltered(orders)
+  }, [orders])
+
+  useEffect(() => {
     if (!orders.length) getData('orders')
-    if (orders.length !== filtered.length) {
-      setFiltered(orders)
-    }
   }, [orders.length, getData])
 
   return (
@@ -51,12 +53,23 @@ function AllOrdersPage() {
         alignItems: 'center'
       }}
     >
-      <Filter
-        data={orders}
-        keysToSearch={['name']}
-        onFilter={handleFilter}
-        placeholder="User Name"
-      />
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          gap: '20px',
+          padding: '20px 0',
+          width: '100%'
+        }}
+      >
+        <Filter
+          data={orders}
+          keysToSearch={['name']}
+          onFilter={handleFilter}
+          placeholder="User Name"
+        />
+      </Box>
       <AllOrders orders={orderItems} />
       {filtered.length > itemsPerPage && (
         <Pagination
