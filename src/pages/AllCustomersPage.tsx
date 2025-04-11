@@ -20,12 +20,13 @@ function AllCustomersPage() {
   const customers = useDataStore((state) => state.customers)
   const [filtered, setFiltered] = useState<Customers[]>(customers)
   const [currentPage, setCurrentPage] = useState<number>(1)
-  const itemsPerPage = 5
 
+  const itemsPerPage = 5
+  const filteredSorted = filtered.toReversed()
   const totalPages = Math.ceil(filtered.length / itemsPerPage)
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
-  const customerItems = filtered.slice(startIndex, endIndex)
+  const customerItems = filteredSorted.slice(startIndex, endIndex)
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page)
@@ -37,10 +38,11 @@ function AllCustomersPage() {
   }
 
   useEffect(() => {
+    setFiltered(customers)
+  }, [customers])
+
+  useEffect(() => {
     if (!customers.length) getData('customers')
-    if (customers.length !== filtered.length) {
-      setFiltered(customers)
-    }
   }, [customers.length, getData])
 
   return (
@@ -51,12 +53,23 @@ function AllCustomersPage() {
         alignItems: 'center'
       }}
     >
-      <Filter
-        data={customers}
-        keysToSearch={['name']}
-        onFilter={handleFilter}
-        placeholder="User Name"
-      />
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          gap: '20px',
+          padding: '20px 0',
+          width: '100%'
+        }}
+      >
+        <Filter
+          data={customers}
+          keysToSearch={['name']}
+          onFilter={handleFilter}
+          placeholder="User Name"
+        />
+      </Box>
       <AllCustomers customers={customerItems} />
       {filtered.length > itemsPerPage && (
         <Pagination
