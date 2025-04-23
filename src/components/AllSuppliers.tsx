@@ -41,7 +41,6 @@ function AllSuppliers({ suppliers }: AllSuppliersProps) {
   }
 
   const handleEdit = (id: string) => {
-    console.log('Edit supplier with id:', id)
     setSupplierItem(suppliers.find((item) => item.id === id))
     handleModal()
   }
