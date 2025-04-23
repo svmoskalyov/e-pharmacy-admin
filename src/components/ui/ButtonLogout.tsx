@@ -11,7 +11,10 @@ function ButtonLogout() {
         height: { mobile: '38px', tablet: '44px' },
         width: { mobile: '38px', tablet: '44px' },
         backgroundColor: 'accent.main',
-        color: 'accent.contrastText'
+        color: 'accent.contrastText',
+        '&:hover': {
+          backgroundColor: 'accent.dark'
+        }
       }}
       onClick={signOut}
     >
