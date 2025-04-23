@@ -1,5 +1,5 @@
 import {
-  Paper, TableRow, TableHead, TableContainer, TableBody, Table, Avatar, Chip
+  Paper, TableRow, TableHead, TableContainer, TableBody, Table, Avatar
 } from '@mui/material'
 import TableName from './ui/TableName.tsx'
 import TableRowHead from './ui/TableRowHead.tsx'
