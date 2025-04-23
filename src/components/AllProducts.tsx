@@ -111,7 +111,6 @@ function AllProducts({ products }: AllProductsProps) {
                   <TableRowCell
                     sx={{
                       display: 'flex',
-                      justifyContent: 'space-between',
                       alignItems: 'center',
                       gap: '8px'
                     }}
