@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router'
-import { Box, List, ListItem, ListItemButton } from '@mui/material'
+import { Link, useLocation } from 'react-router'
+import { Box, List, ListItem, ListItemButton, Tooltip } from '@mui/material'
 import { Icon } from '@iconify/react'
 import ButtonLogout from './ui/ButtonLogout.tsx'
 
@@ -18,6 +18,8 @@ const data = [
 
 function Sidebar({ onClose }: SidebarProps) {
   const [selectedValue, setSelectedValue] = useState<string>('')
+  const { pathname } = useLocation()
+  const location = pathname.split('/')[1]
 
   const handleListItemClick = (choiced: string) => {
     setSelectedValue(choiced)
@@ -27,8 +29,8 @@ function Sidebar({ onClose }: SidebarProps) {
   }
 
   useEffect(() => {
-    setSelectedValue(window.location.pathname.split('/')[1])
-  }, [])
+    setSelectedValue(location)
+  }, [location])
 
   return (
     <Box
@@ -38,7 +40,7 @@ function Sidebar({ onClose }: SidebarProps) {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-between',
-        height: '90vh',
+        height: '88vh',
         borderRight: { desktop: '1px solid rgba(29, 30, 33, 0.1)' }
       }}
     >
@@ -49,33 +51,35 @@ function Sidebar({ onClose }: SidebarProps) {
             disablePadding
             sx={{ justifyContent: 'center', marginBottom: '14px' }}
           >
-            <ListItemButton
-              component={Link}
-              to={item.label}
-              selected={selectedValue === item.label}
-              onClick={() => handleListItemClick(item.label)}
-              sx={[
-                {
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  padding: '0',
-                  width: '40px',
-                  height: '40px',
-                  color: 'bg.gray',
-                  backgroundColor: 'bg.white',
-                  borderRadius: '50px',
-                  dropShadow: '0px -1px 7px 0px rgba(71, 71, 71, 0.05)'
-                },
-                {
-                  '&:hover, &:focus, &.Mui-selected, &.Mui-selected:hover': {
-                    color: 'accent.main',
-                    backgroundColor: 'bg.white'
+            <Tooltip title={item.label} placement="right" arrow>
+              <ListItemButton
+                component={Link}
+                to={item.label}
+                selected={selectedValue === item.label}
+                onClick={() => handleListItemClick(item.label)}
+                sx={[
+                  {
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '0',
+                    width: '40px',
+                    height: '40px',
+                    color: 'bg.gray',
+                    backgroundColor: 'bg.white',
+                    borderRadius: '50px',
+                    dropShadow: '0px -1px 7px 0px rgba(71, 71, 71, 0.05)'
+                  },
+                  {
+                    '&:hover, &:focus, &.Mui-selected, &.Mui-selected:hover': {
+                      color: 'accent.main',
+                      backgroundColor: 'bg.white'
+                    }
                   }
-                }
-              ]}
-            >
-              <Icon icon={item.icon} width="14" height="14" />
-            </ListItemButton>
+                ]}
+              >
+                <Icon icon={item.icon} width="14" height="14" />
+              </ListItemButton>
+            </Tooltip>
           </ListItem>
         ))}
       </List>
