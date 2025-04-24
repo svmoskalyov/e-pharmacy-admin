@@ -36,11 +36,10 @@ function Pagination({ totalPages, currentPage, onPageChange }: PaginationProps) 
           variant="text"
           onClick={() => onPageChange(page)}
           sx={{
-            justifyContent: 'flex-end',
-            alignItems: 'flex-end',
             padding: '0',
             minWidth: { mobile: '14px', tablet: '19px' },
             height: { mobile: '14px', tablet: '19px' },
+            borderRadius: '60px',
             '&:hover': {
               backgroundColor: 'transparent'
             }
