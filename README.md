@@ -1,54 +1,24 @@
-# React + TypeScript + Vite
+# 💊 [E-PHARMACY-ADMIN]()
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 📝 About the application
+A web application was developed for the Dashboard page (consists of Statistics, Recent Customers, Income/Expenses components), which displays information about income, expenses, and other statistics of the medical store. The main administrator logs in to his account using his username and password (for test, username: admin@gmail.com and password: admin1234) and is redirected to the main Dashboard page. The layout is adaptive, with breakpoints (375px, 768px, 1440px). 
+A Sidebar component has been created, which contains a navigation menu for different pages of the application, which contains items in the form of icons:
+- Dashboard: Item for going to the main Dashboard page.
+- Orders: Item for going to the orders page.
+- Products: Item for going to the products page.
+- Customers: Item for going to the page with a list of customers.
+- Suppliers: Item for going to the page with a list of customers.
 
-Currently, two official plugins are available:
+Each menu item is clickable and leads to the corresponding page of the application. Highlights the active menu item so that the user always sees which page he is on.
+On the data pages, filtering by name has been added. On the product page, you can add a new product, deregister or delete an existing one. On the supplier list page, you can add a new one and deregister an existing one.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🧰 Technologies stack 
+TypeScript, SASS, React DOM, React Router, React hook form, Yup, Firebase Database, Firebase Auth, Zustand, Dayjs, Material UI, MUI x-date-pickers, Fontsource, Iconify, Vite, Prettier, ESLint.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+---
+![image](https://github.com/user-attachments/assets/abf8dc10-876a-474d-b9b2-773ad207f705)
+![image](https://github.com/user-attachments/assets/6ce7eaed-27b6-45bd-86be-f062cc746155)
+![image](https://github.com/user-attachments/assets/3e516a48-ce68-4da0-a127-90a610c3133f)
+![image](https://github.com/user-attachments/assets/5470b255-25b5-4680-b9df-3c0f1ce762d6)
+![image](https://github.com/user-attachments/assets/ab090370-5ed8-4bc9-b771-d74dbb5f67ba)
+![image](https://github.com/user-attachments/assets/d22ef3aa-7e27-4de3-9459-e7ed7a134d1c)
